@@ -40,8 +40,8 @@ const validateCred = arr => {
 }
 
 //Test functions
-//console.log(validateCred(valid1));
-//console.log(validateCred(invalid1));
+console.log(validateCred(valid1));
+console.log(validateCred(invalid1));
 
 const findInvalidCards = cards => {
     const invalid = [];
@@ -55,9 +55,9 @@ const findInvalidCards = cards => {
 }
 
 // Test functions
-//console.log(findInvalidCards([valid1, valid2, valid3, valid4, valid5]));
-//console.log(findInvalidCards([invalid1, invalid2, invalid3, invalid4, invalid5]));
-//console.log(findInvalidCards(batch));
+console.log(findInvalidCards([valid1, valid2, valid3, valid4, valid5]));
+console.log(findInvalidCards([invalid1, invalid2, invalid3, invalid4, invalid5]));
+console.log(findInvalidCards(batch));
 
 const idInvalidCardCompanies = invalidBatch => {
     const companies = [];
@@ -91,9 +91,9 @@ const idInvalidCardCompanies = invalidBatch => {
 }
 
 //Test functions
-//console.log(idInvalidCardCompanies([invalid1]));
-//console.log(idInvalidCardCompanies([invalid2]));
-//console.log(idInvalidCardCompanies(batch));
+console.log(idInvalidCardCompanies([invalid1]));
+console.log(idInvalidCardCompanies([invalid2]));
+console.log(idInvalidCardCompanies(batch));
 
 const convertToArray = str => {
     str = str.split('').map(Number);
@@ -103,3 +103,31 @@ const convertToArray = str => {
 //Test functions
 console.log(convertToArray('123456789'));
 console.log(convertToArray('987654321'));
+
+const convertToValid = arr => {
+    let total = 0;
+    for (let i = arr.length - 1; i >= 0; i--) {
+        let currValue = arr[i];
+        if ((arr.length - 1 - i) % 2 === 1) {
+            currValue *= 2;
+            if (currValue > 9) {
+                currValue -= 9;
+            }
+        }
+        total += currValue;
+    }
+    if (!total % 10 === 0) {
+        let lastDigit = arr[arr.length - 1];
+        lastDigit += total % 10;
+        if (lastDigit > 9) {
+            lastDigit -= 10;
+        }
+        arr[arr.length - 1] = lastDigit;
+        total += total % 10;
+    }
+    return arr;
+}
+
+//Test functions
+console.log(convertToValid(invalid1));
+console.log(validateCred(invalid1));
