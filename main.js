@@ -39,7 +39,7 @@ const validateCred = arr => {
     return total % 10 === 0;
 }
 
-//Test functions:
+//Test functions
 console.log(validateCred(valid1));
 console.log(validateCred(invalid1));
 
@@ -54,8 +54,43 @@ const findInvalidCards = cards => {
     return invalid;
 }
 
-// Test function
+// Test functions
 console.log(findInvalidCards([valid1, valid2, valid3, valid4, valid5]));
 console.log(findInvalidCards([invalid1, invalid2, invalid3, invalid4, invalid5]));
+console.log(findInvalidCards(batch));
 
+const idInvalidCardCompanies = invalidBatch => {
+    const companies = [];
+    for (let i = 0; i < invalidBatch.length; i++) {
+        switch (invalidBatch[i][0]) {
+            case 3:
+                if (companies.indexOf('Amex') === -1) {
+                    companies.push('Amex');
+                }
+                break
+            case 4:
+                if (companies.indexOf('Visa') === -1) {
+                    companies.push('Visa');
+                }
+                break
+            case 5:
+                if (companies.indexOf('Mastercard') === -1) {
+                    companies.push('Mastercard');
+                }
+                break
+            case 6:
+                if (companies.indexOf('Discover') === -1) {
+                    companies.push('Discover');
+                }
+                break
+            default:
+                console.log('Company not found');
+        }
+    }
+    return companies;
+}
 
+//Test functions
+console.log(idInvalidCardCompanies([invalid1]));
+console.log(idInvalidCardCompanies([invalid2]));
+console.log(idInvalidCardCompanies(batch));
