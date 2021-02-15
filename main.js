@@ -43,6 +43,19 @@ const validateCred = arr => {
 console.log(validateCred(valid1));
 console.log(validateCred(invalid1));
 
+const findInvalidCards = cards => {
+    const invalid = [];
+    for (let i = 0; i < cards.length; i++) {
+        let currCred = cards[i];
+        if (!validateCred(currCred)) {
+            invalid.push(currCred);
+        }
+    }
+    return invalid;
+}
 
+// Test function
+console.log(findInvalidCards([valid1, valid2, valid3, valid4, valid5]));
+console.log(findInvalidCards([invalid1, invalid2, invalid3, invalid4, invalid5]));
 
 
